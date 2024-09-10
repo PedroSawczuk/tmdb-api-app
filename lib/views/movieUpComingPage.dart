@@ -37,7 +37,7 @@ class _MovieUpComingPageState extends State<MovieUpComingPage> {
             );
           } else if (snapshot.hasData) {
             final movies = snapshot.data!;
-            return ListView.builder(
+            return ListView.separated(
               itemCount: movies.length,
               itemBuilder: (context, index) {
                 final movie = movies[index];
@@ -51,6 +51,7 @@ class _MovieUpComingPageState extends State<MovieUpComingPage> {
                   onTap: () {},
                 );
               },
+              separatorBuilder: (BuildContext context, int index) => Divider(),
             );
           } else {
             return Center(

@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
             return Center(child: Text('Erro: ${snapshot.error}'));
           } else if (snapshot.hasData) {
             final movies = snapshot.data!;
-            return ListView.builder(
+            return ListView.separated(
               itemCount: movies.length,
               itemBuilder: (context, index) {
                 final movie = movies[index];
@@ -48,6 +48,8 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {},
                 );
               },
+              separatorBuilder: (BuildContext context, int index) =>
+                  const Divider(),
             );
           } else {
             return Center(child: Text('Nenhum dado disponível'));

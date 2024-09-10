@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tmdb_api_app/utils/drawerCustom.dart';
-import 'package:tmdb_api_app/services/tmdbServices.dart'; 
-import 'package:tmdb_api_app/models/movieModel.dart'; 
+import 'package:tmdb_api_app/services/tmdbServices.dart';
+import 'package:tmdb_api_app/models/movieModel.dart';
 
 class MovieTrendingPage extends StatefulWidget {
   const MovieTrendingPage({super.key});
@@ -37,7 +37,7 @@ class MovieTrendingPageState extends State<MovieTrendingPage> {
             );
           } else if (snapshot.hasData) {
             final movies = snapshot.data!;
-            return ListView.builder(
+            return ListView.separated(
               itemCount: movies.length,
               itemBuilder: (context, index) {
                 final movie = movies[index];
@@ -48,10 +48,11 @@ class MovieTrendingPageState extends State<MovieTrendingPage> {
                   ),
                   title: Text(movie.title),
                   subtitle: Text('Lançamento: ${movie.releaseDate}'),
-                  onTap: () {
-                  },
+                  onTap: () {},
                 );
               },
+              separatorBuilder: (BuildContext context, int index) =>
+                   Divider(),
             );
           } else {
             return Center(child: Text('Nenhum dado disponível'));
