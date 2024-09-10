@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tmdb_api_app/routes/appRoutes.dart';
 import 'package:tmdb_api_app/utils/drawerCustom.dart';
 import 'package:tmdb_api_app/services/tmdbServices.dart';
 import 'package:tmdb_api_app/models/movieModel.dart';
@@ -48,11 +49,16 @@ class MovieTrendingPageState extends State<MovieTrendingPage> {
                   ),
                   title: Text(movie.title),
                   subtitle: Text('Lançamento: ${movie.releaseDate}'),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.movieDetailPage,
+                      arguments: movie,
+                    );
+                  },
                 );
               },
-              separatorBuilder: (BuildContext context, int index) =>
-                   Divider(),
+              separatorBuilder: (BuildContext context, int index) => Divider(),
             );
           } else {
             return Center(child: Text('Nenhum dado disponível'));
