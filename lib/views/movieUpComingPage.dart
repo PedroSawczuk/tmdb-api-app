@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tmdb_api_app/models/movieModel.dart';
-import 'package:tmdb_api_app/routes/appRoutes.dart';
 import 'package:tmdb_api_app/services/tmdbServices.dart';
 import 'package:tmdb_api_app/utils/drawerCustom.dart';
 
@@ -49,13 +48,7 @@ class _MovieUpComingPageState extends State<MovieUpComingPage> {
                   ),
                   title: Text(movie.title),
                   subtitle: Text('Lançamento: ${movie.releaseDate}'),
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      AppRoutes.movieDetailPage,
-                      arguments: movie,
-                    );
-                  },
+                  onTap: () {},
                 );
               },
               separatorBuilder: (BuildContext context, int index) => Divider(),
